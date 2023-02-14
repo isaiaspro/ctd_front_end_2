@@ -31,7 +31,7 @@ let pontuacaoJogador = 0;
 let pontuacaoComputador = 0;
 
 for (let rodada = 1; rodada <= 3; rodada++) {
-  let escolha = parseInt(prompt('[1] Pedra | [2] Papel | [3] Tesoura'));
+  let escolha = parseInt(prompt('1️⃣🪨Pedra\n2️⃣📄Papel\n3️⃣✂️Tesoura'));
 
   let computador = parseInt(Math.random() * 3 + 1);
 
@@ -72,12 +72,12 @@ for (let rodada = 1; rodada <= 3; rodada++) {
 }
 
 if (pontuacaoJogador > pontuacaoComputador) {
-  console.log(`Você venceu! Sua pontuação: ${pontuacaoJogador} x ${pontuacaoComputador} da máquina`);
-    window.alert(`Você venceu! Sua pontuação: ${pontuacaoJogador} x ${pontuacaoComputador} da máquina`);
+  console.log(`Você venceu! O placar foi de foi: ${pontuacaoJogador} x ${pontuacaoComputador} contra o computador`);
+    window.alert(`Você venceu! O placar foi de: ${pontuacaoJogador} x ${pontuacaoComputador} contra o computador`);
 } else if (pontuacaoJogador < pontuacaoComputador) {
-    console.log(`Você perdeu! Sua pontuação: ${pontuacaoJogador} x ${pontuacaoComputador} da máquina`);
-        window.alert(`Você perdeu! Sua pontuação: ${pontuacaoJogador} x ${pontuacaoComputador} da máquina`);
+    console.log(`Você perdeu! O placar foi de: ${pontuacaoJogador} x ${pontuacaoComputador} à favor do computador`);
+        window.alert(`Você perdeu! O placar foi de: ${pontuacaoJogador} x ${pontuacaoComputador} à favor do computador`);
   } else {
-    console.log(`Deu empate! Sua pontuação: ${pontuacaoJogador} x ${pontuacaoComputador} da máquina`);
-        window.alert(`Deu empate! Sua pontuação: ${pontuacaoJogador} x ${pontuacaoComputador} da máquina`);
+    console.log(`Deu empate! O placar foi de: ${pontuacaoJogador} x ${pontuacaoComputador}`);
+        window.alert(`Deu empate! O placar foi de: ${pontuacaoJogador} x ${pontuacaoComputador}`);
   }
