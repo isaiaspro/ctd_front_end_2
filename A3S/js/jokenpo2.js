@@ -65,15 +65,15 @@ function comecarJogo() {
     //Então o jogo é cancelado, e essa função chama "perguntaUsuarioDesejaJogar()". Caso clique em cancelar, 
     //É exibido o alert("Obrigado por visitar a pagina");
     //FIM
-    verificarNaN(usuario);
+   /* verificarNaN(usuario);
     if (isNaN(usuario)) {
       break;
-    }
+    }*/
     
 
     let oponente = parseInt(Math.random() * 3 + 1);
 
-    if (usuario < 1 || usuario > 3) {
+    if (usuario < 1 || usuario > 3 || (isNaN(usuario))) {
       rodada--;
     }
 
