@@ -46,43 +46,56 @@ function verificarGanhadorRodada(usuario, oponente, rodada) {
   }
 
   //Caso chegue à terceira rodada, limpamos o placar, para assim atualizar e exibir o placar correto, após isso zeramos as pontuações para iniciar um novo jogo.
-if (rodada == 3){
-  document.getElementById("placar").innerHTML = "";
-  mostarResultado(pontuacaoJogador, pontuacaoOponente);
-  pontuacaoJogador = 0;
-  pontuacaoOponente =0;
-}
+  // if (rodada >= 3 && pontuacaoJogador >=2 || pontuacaoOponente >=2){
+  //   document.getElementById("placar").innerHTML = "";
+  //   mostarResultado(pontuacaoJogador, pontuacaoOponente);
+  //   pontuacaoJogador = 0;
+  //   pontuacaoOponente =0;
+  // }
 }
 
 //Recolhe as jogadas durante 3 rodadas
 function comecarJogo() {
   for (let rodada = 1; rodada <= 3; rodada++) {
-
-
     let usuario = parseInt(prompt("1️⃣🪨Pedra\n2️⃣📄Papel\n3️⃣✂️Tesoura"));
 
     //Verificamos se o usuário clicou em cancelar. Pois ao clicar em cancelar, o "usuario = NaN"
-    //Então o jogo é cancelado, e essa função chama "perguntaUsuarioDesejaJogar()". Caso clique em cancelar, 
+    //Então o jogo é cancelado, e essa função chama "perguntaUsuarioDesejaJogar()". Caso clique em cancelar,
     //É exibido o alert("Obrigado por visitar a pagina");
     //FIM
-   /* verificarNaN(usuario);
+    /* verificarNaN(usuario);
     if (isNaN(usuario)) {
       break;
     }*/
-    
 
     let oponente = parseInt(Math.random() * 3 + 1);
 
-    if (usuario < 1 || usuario > 3 || (isNaN(usuario))) {
+    if (usuario < 1 || usuario > 3 || isNaN(usuario)) {
       rodada--;
     }
 
     // Após obter a Jogada do Usuário e Gerar uma Jogada para o Oponente, chamamos a função para verificar quem foi o ganhador
     verificarGanhadorRodada(usuario, oponente, rodada);
 
+    if ((rodada >= 2 && pontuacaoJogador >= 2) || pontuacaoOponente >= 2) {
+      document.getElementById("frase_placar").innerHTML = "";
+      mostarResultado(pontuacaoJogador, pontuacaoOponente);
+      pontuacaoJogador = 0;
+      pontuacaoOponente = 0;
+      break;
+    } else if (
+      rodada >= 3 &&
+      (pontuacaoJogador < 2 ||
+        pontuacaoOponente < 2 ||
+        pontuacaoJogador == pontuacaoOponente)
+    ) {
+      window.alert(
+        `Rodada de desempate: O placar atual é: ${pontuacaoJogador} x ${pontuacaoOponente}.\n Quem vencer 2 rodadas primeiro, ganha o jogo\n Boa Sorte! `
+      );
+      rodada--;
+    }
   }
 }
-
 
 //Essa função atualiza o placar no pagina HTML
 function mostarResultado(pontuacaoJogador, pontuacaoOponente) {
@@ -122,37 +135,26 @@ function mostarResultado(pontuacaoJogador, pontuacaoOponente) {
 //Caso sim, começa o jogo, senão Agradece pela visita.
 function perguntaUsuarioDesejaJogar() {
   let usuarioDesejaJogar = confirm("Você gostaria de jogar?");
-
-  if (usuarioDesejaJogar === true) {
-    comecarJogo();
-  } else {
-    alert("Obrigado por visitar a pagina");
-    document.getElementById("placar").innerHTML = "";
-    document.querySelector(
-      "h1"
-    ).innerText += `Obrigado por visitar a pagina 😉`;
+  {
+    if (usuarioDesejaJogar === true) {
+      comecarJogo();
+    } else {
+      alert("Obrigado por visitar a pagina");
+      document.getElementById("frase_placar").innerHTML = "";
+      document.querySelector(
+        "h1"
+      ).innerText += `Obrigado por visitar a pagina 😉`;
+    }
   }
 }
 
 //Essa função limpa o placar
-function limparPlacar(){
-  document.getElementById("placar").innerHTML = "Placar Zerado!";
-}
-
-
-//Verifica se a opção escolhida foi Cancelar no prompt, caso sim, usuario = NaN.Então o jogo é cancelado e perdimos
-//Se o usuário quer continuar o jogo
-function verificarNaN(usuario) {
-  if (isNaN(usuario)){
-    window.alert("Jogo Cancelado");
-    limparPlacar();
-    perguntaUsuarioDesejaJogar();
-  }
+function limparPlacar() {
+  document.getElementById("frase_placar").innerHTML = "Placar Zerado!";
 }
 
 // Chamada da função que ira Começar o nosso game
 perguntaUsuarioDesejaJogar();
-
 
 //Botão Jogar Novamente
 document.getElementById("btn_playAgain").addEventListener("click", comecarJogo);

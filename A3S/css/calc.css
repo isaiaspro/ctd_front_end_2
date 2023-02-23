@@ -21,6 +21,16 @@ h1{
 
 }
 
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .retangulo{
     display: flex;
     min-width: 386px;
@@ -36,15 +46,6 @@ h1{
     padding: .5rem;
 }
 
-.container{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-  flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .botoes{
   display: flex;
   flex-wrap: wrap;
@@ -52,32 +53,4 @@ h1{
   align-items: center;
   justify-content: center;
   gap: 1rem;
-}
-
-.quadroBotoes{
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.button{
-  height: 50px;
-  width: 200px;
-  border-radius: 4px;
-  border: 1px solid #00ff00;
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #00ff00;
-  cursor: pointer;
-}
-
-.button:hover{
-  background-color: #00ff002a;
-}
-
-.button a {
-  text-decoration: none;
-  color: #00ff00;
 }
