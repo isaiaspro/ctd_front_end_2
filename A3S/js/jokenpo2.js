@@ -132,14 +132,14 @@ function mostarResultado(pontuacaoJogador, pontuacaoOponente) {
   }
 }
 
-//Caso sim, começa o jogo, senão Agradece pela visita.
+//Caso sim, começa o jogo, senão Agradece o usuário pela visita.
 function perguntaUsuarioDesejaJogar() {
   let usuarioDesejaJogar = confirm("Você gostaria de jogar?");
   {
     if (usuarioDesejaJogar === true) {
       comecarJogo();
     } else {
-      alert("Obrigado por visitar a pagina");
+     // alert("Obrigado por visitar a pagina");
       document.getElementById("frase_placar").innerHTML = "";
       document.querySelector(
         "h1"
@@ -160,3 +160,5 @@ perguntaUsuarioDesejaJogar();
 document.getElementById("btn_playAgain").addEventListener("click", comecarJogo);
 //Botão Limpar placar
 document.getElementById("btn_Limpar").addEventListener("click", limparPlacar);
+
+
