@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;500;900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html{
+    font-family: 'roboto',sans-serif;
+    width: 100vw;
+}
+
+.titles{
+    font-size: 2rem;
+    color: #fff;
+}
+
+.main{
+display: flex;
+justify-content: center;
+background-color: #050505;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    height: 100%;
+    width: 100%;
+    max-width: 1150px;
+    padding: 12px;
+}
+
+.register{
+display: flex;
+flex-direction: column;
+text-align: center;
+border-radius: 12px;
+width: 100%;
+max-height: 450px;
+background-color: #151515;
+min-width: 294.4px;
+gap: 15px;
+padding: 10px;
+}
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input{
+    all: unset;
+    background-color: #1f1f1f;
+    color: rgba(255,255,255,0.8);
+    height: 50px;
+    text-align: left;
+    border-radius: 12px;
+    padding: 0px 10px;
+    font-weight: 500;
+
+}
+
+.text-area{
+    height: 100px;
+    padding-top: 10px;
+}
+
+
+.input:focus{
+outline: none;
+}
+
+.button{
+all: unset;
+height: 50px;
+border-radius: 12px;
+background-color: #6CE971;
+color: #fff;
+width: 274px;
+cursor: pointer;
+}
+
+.div_button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.task_cards{
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF99;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+ h2 .titles{
+    margin-bottom: 15px;
+}
+
+.card{ 
+display: flex;
+flex-direction: column;
+text-align: center;
+width: 100%;
+max-width: 294.4px;
+max-height: 450px;
+border-radius: 12px;
+max-width: 300px;
+max-height: 450px;
+background-color: #151515;
+min-width: 294.4px;
+padding-bottom: 10px;
+}
+
+.card img{
+    border-radius:12px;
+}
+
+.card h3{
+    padding: 25px 25px 12px 25px;
+    text-align: left;
+    font-weight: 700;
+}
+
+.card p{
+    padding: 0px 25px;
+    text-align: left;
+    line-height: 21px;
+    font-weight: 300;
+
+}
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 1150px) {
+    .register{
+        max-width: 1150px;
+    }
+
+}
