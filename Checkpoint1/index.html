@@ -13,23 +13,35 @@
 
       <div class="content">
       <div class="register">
+
         <h1 class="titles">Nova tarefa</h1>
 
         <form action="" class="form">
-          <input
+
+          <div class="input_titulo error_message_container">
+            <input
             type="text"
-            id="task_name"
-            class="input task_name"
+            id="taskName"
+            class="input task_name error"
             placeholder="Título"
-          />
+            />
+          
+        </div>
 
-          <input type="url" id="ulr" class="input url" placeholder="URL" />
 
+        <div class="input_url error_message_container">
+          <input type="url" id="url" class="input url" placeholder="URL" />
+        </div>
+
+
+        <div class="input_descricao error_message_container">
           <textarea
             class="input text-area description"
             id="description"
             placeholder="Descrição"
           ></textarea>
+        </div>
+
         </form>
 
         <div class="div_button">
