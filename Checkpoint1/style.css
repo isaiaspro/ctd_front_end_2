@@ -9,7 +9,6 @@
 
 body, html{
     font-family: 'roboto',sans-serif;
-    width: 100vw;
 }
 
 .titles{
@@ -21,6 +20,7 @@ body, html{
 display: flex;
 justify-content: center;
 background-color: #050505;
+/* width: 100vw; */
 }
 
 .content{
@@ -28,9 +28,10 @@ background-color: #050505;
     flex-direction: column;
     gap: 25px;
     height: 100%;
-    width: 100%;
+    width: 100vw;
     max-width: 1150px;
     padding: 12px;
+    align-items: center;
 }
 
 .register{
@@ -40,6 +41,7 @@ text-align: center;
 border-radius: 12px;
 width: 100%;
 max-height: 450px;
+max-width: 1150px;
 background-color: #151515;
 min-width: 294.4px;
 gap: 15px;
@@ -90,13 +92,24 @@ cursor: pointer;
     justify-content: flex-end;
 }
 
-.task_cards{
+.tasks{
     display: flex;
-    flex-direction: column;
-    color: #FFFFFF99;
-    gap: 20px;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.task_cards{
+    display: grid;
+    grid-template-columns: 1fr;
+    color: #FFFFFF99;
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    
 }
 
  h2 .titles{
@@ -141,12 +154,48 @@ padding-bottom: 10px;
 
 
 
-
-
-
-@media screen and (min-width: 1150px) {
+ @media screen and (min-width: 1150px) {
     .register{
-        max-width: 1150px;
+        max-width: 1000px;
     }
 
+    .task_cards{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content: left;
+        grid-auto-flow: row;
+    }
+
+
 }
+
+@media screen and (min-width: 660px) {
+    .register{
+        max-width: 1000px;
+    }
+
+    .task_cards{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content: left;
+        grid-auto-flow: row;
+    }
+
+} 
+
+
+
+
+/* @media screen and (max-width: 1150px) {
+    .register{
+        max-width: 1000px;
+    }
+
+    .task_cards{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: left;
+        grid-auto-flow: row
+    }
+
+}  */
