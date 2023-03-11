@@ -151,20 +151,6 @@ padding-bottom: 10px;
 
 
 
- @media screen and (min-width: 1150px) {
-    .register{
-        max-width: 1000px;
-    }
-
-    .task_cards{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-content: left;
-        grid-auto-flow: row;
-    }
-
-
-}
 
 @media screen and (min-width: 660px) {
     .register{
@@ -173,26 +159,23 @@ padding-bottom: 10px;
 
     .task_cards{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         justify-content: left;
-        grid-auto-flow: row;
     }
 
 } 
 
-
-
-
-/* @media screen and (max-width: 1150px) {
+@media screen and (min-width: 975px) {
     .register{
         max-width: 1000px;
     }
 
     .task_cards{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         justify-content: left;
-        grid-auto-flow: row
     }
 
-}  */
+} 
+
+
