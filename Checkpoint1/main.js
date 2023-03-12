@@ -4,8 +4,6 @@ const descriptionRef = document.querySelector('#description')
 const createTaskButtonRef = document.querySelector('#createTaskButton')
 const taskCardsRef = document.querySelector('#taskCards')
 
-// console.log(taskCardsRef)
-
 
 const cards = []
 
@@ -14,14 +12,14 @@ console.log(cards)
 createTaskButtonRef.disabled = true
 createTaskButtonRef.classList.add('button_error')
 
-// function validaCampos() {
-//   const errors = document.querySelectorAll('.error')
-//   if (errors.length > 0) {
-//     createTaskButtonRef.disabled = true
-//   } else {
-//     createTaskButtonRef.disabled = false
-//   }
-// }
+function validaCampos() {
+  const errors = document.querySelectorAll('.error')
+  if (errors.length > 0) {
+    createTaskButtonRef.disabled = true
+  } else {
+    createTaskButtonRef.disabled = false
+  }
+}
 
 
 
@@ -138,6 +136,10 @@ let card = {
   descricao: descriptionRef.value
  }
 
+validaUrl()
+validaTitulo()
+validaDescricao()
+
  cards.push(card)
 
  taskCardsRef.innerHTML += `
@@ -147,6 +149,7 @@ let card = {
  <p> ${card.descricao} </p>
 </div>
 `
+
 }
 
 
