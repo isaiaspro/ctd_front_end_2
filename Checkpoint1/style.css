@@ -28,7 +28,6 @@ background-color: #050505;
     display: flex;
     flex-direction: column;
     gap: 25px;
-    /* height: 100vh; */
     max-height:100%;
     width: 100vw;
     max-width: 1150px;
@@ -105,6 +104,11 @@ background-color: #6CE971;
 color: #fff;
 width: 274px;
 cursor: pointer;
+}
+
+.button_error{
+    background-color: #6CE97133;
+    cursor: not-allowed;
 }
 
 .div_button{

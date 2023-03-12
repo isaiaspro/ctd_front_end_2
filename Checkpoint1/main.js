@@ -13,35 +13,61 @@ console.log(cards)
 
 function validaTitulo(titulo){
   let errorMessageRef = document.querySelector('.input_titulo') 
-  let taskNameRef = document.querySelector('#taskName')
+  let taskNameRef = document.querySelector('#taskName').value
   let errorMessage = document.createElement('p')
 
-  if(!errorMessage){
-  errorMessage.id = 'taskErrorMessage'
-  errorMessage.innerText = 'Por favor, preencha corretamente o campo Título'
-  errorMessageRef.appendChild(errorMessage)
-}
-taskNameRef.classList.add('error')
-formTask.titulo = titulo
+  if (taskNameRef == ''){
+    if(!errorMessage){
+    errorMessage.id = 'taskErrorMessage'
+    errorMessage.innerText = 'Por favor, preencha corretamente o campo Título'
+    errorMessageRef.appendChild(errorMessage)
+  }
+  taskNameRef.classList.add('error')
+  }
 }
 
 
-function validaUrl(url){
+function validaUrl(url, allowEmpty=false){
   let errorMessageRef = document.querySelector('.input_url') 
   let urlRef = document.querySelector('#url')
   let errorMessage = document.createElement('p')
 
-  let regex = new RegExp("^(http|https)://[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$", "i");
-  
-  if (!regex.test(url)) {
-    if(!errorMessage){
+  if (url === '') {
+    if (errorMessageRef.querySelector('#taskErrorMessage')) {
+      errorMessageRef.removeChild(errorMessageRef.querySelector('#taskErrorMessage'));
+    }
     errorMessage.id = 'taskErrorMessage'
-    errorMessage.innerText = 'Por favor, preencha corretamente o campo URL'
+    errorMessage.innerText = 'Por favor, preencha o campo URL'
     errorMessageRef.appendChild(errorMessage)
     urlRef.classList.add('error')
+    createTaskButtonRef.classList.add('button_error')
+    createTaskButtonRef.disabled = true
+    return
+  }
+
+  let regex = new RegExp("^((((https?|ftp|gopher|telnet|nntp):(\\/\\/)|(http|https):\\/\\/)?([\\da-z.-]+)\\.([a-z.]{2,6})|((mailto|news):(\\/\\/)|(http|https):\\/\\/)([a-z0-9-]+(\\.[a-z0-9-]+)*\\.[a-z]{2,6}))(:\\d{2,5})?([\\/\\w.-]*)*\\/?(\\?([\\w\\-.,@?^=%&:\\/~+#]*)+)?(#([\\w\\-\\s]*)+)?)?$", "i");
+  
+  if (!regex.test(url)) {
+    if (errorMessageRef.querySelector('#taskErrorMessage')) {
+      errorMessageRef.removeChild(errorMessageRef.querySelector('#taskErrorMessage'));
+    }
+  if (!errorMessageRef.querySelector('#taskErrorMessage')) {
+    errorMessage.id = 'taskErrorMessage'
+    errorMessage.innerText = 'Por favor, preencha corretamente o campo URL, com uma url completa'
+    errorMessageRef.appendChild(errorMessage)
+  }
+    urlRef.classList.add('error')
+    createTaskButtonRef.classList.add('button_error')
+    createTaskButtonRef.disabled = true
+  }else{
+    if(errorMessageRef.querySelector('#taskErrorMessage')){
+      errorMessageRef.removeChild(errorMessageRef.querySelector('#taskErrorMessage'))
+    }
+    urlRef.classList.remove('error')
+    createTaskButtonRef.classList.remove('button_error')
+    createTaskButtonRef.disabled = false
   }
   }
-}
 
 
 
