@@ -11,18 +11,45 @@ const cards = []
 
 console.log(cards)
 
-function validaTitulo(titulo){
+createTaskButtonRef.disabled = true
+createTaskButtonRef.classList.add('button_error')
+
+// function validaCampos() {
+//   const errors = document.querySelectorAll('.error')
+//   if (errors.length > 0) {
+//     createTaskButtonRef.disabled = true
+//   } else {
+//     createTaskButtonRef.disabled = false
+//   }
+// }
+
+
+
+function validaTitulo(titulo, allowEmpty=false){
   let errorMessageRef = document.querySelector('.input_titulo') 
-  let taskNameRef = document.querySelector('#taskName').value
+  let taskNameRef = document.querySelector('#taskName')
   let errorMessage = document.createElement('p')
 
-  if (taskNameRef == ''){
-    if(!errorMessage){
+  titulo = titulo.trim()
+
+  if (titulo === '') {
+    if (errorMessageRef.querySelector('#taskErrorMessage')) {
+      errorMessageRef.removeChild(errorMessageRef.querySelector('#taskErrorMessage'));
+    }
     errorMessage.id = 'taskErrorMessage'
-    errorMessage.innerText = 'Por favor, preencha corretamente o campo Título'
+    errorMessage.innerText = '*Por favor, preencha o campo Título, ele não pode ficar em branco ou conter apenas espaços'
     errorMessageRef.appendChild(errorMessage)
-  }
-  taskNameRef.classList.add('error')
+    taskNameRef.classList.add('error')
+    createTaskButtonRef.classList.add('button_error')
+    createTaskButtonRef.disabled = true
+  return  
+  }else{
+    if(errorMessageRef.querySelector('#taskErrorMessage')){
+      errorMessageRef.removeChild(errorMessageRef.querySelector('#taskErrorMessage'))
+    }
+    taskNameRef.classList.remove('error')
+    createTaskButtonRef.classList.remove('button_error')
+    createTaskButtonRef.disabled = false
   }
 }
 
@@ -32,17 +59,17 @@ function validaUrl(url, allowEmpty=false){
   let urlRef = document.querySelector('#url')
   let errorMessage = document.createElement('p')
 
-  if (url === '') {
+    if (url === '') {
     if (errorMessageRef.querySelector('#taskErrorMessage')) {
       errorMessageRef.removeChild(errorMessageRef.querySelector('#taskErrorMessage'));
     }
     errorMessage.id = 'taskErrorMessage'
-    errorMessage.innerText = 'Por favor, preencha o campo URL'
+    errorMessage.innerText = '*Por favor, preencha o campo URL'
     errorMessageRef.appendChild(errorMessage)
     urlRef.classList.add('error')
     createTaskButtonRef.classList.add('button_error')
     createTaskButtonRef.disabled = true
-    return
+  return  
   }
 
   let regex = new RegExp("^((((https?|ftp|gopher|telnet|nntp):(\\/\\/)|(http|https):\\/\\/)?([\\da-z.-]+)\\.([a-z.]{2,6})|((mailto|news):(\\/\\/)|(http|https):\\/\\/)([a-z0-9-]+(\\.[a-z0-9-]+)*\\.[a-z]{2,6}))(:\\d{2,5})?([\\/\\w.-]*)*\\/?(\\?([\\w\\-.,@?^=%&:\\/~+#]*)+)?(#([\\w\\-\\s]*)+)?)?$", "i");
@@ -53,7 +80,7 @@ function validaUrl(url, allowEmpty=false){
     }
   if (!errorMessageRef.querySelector('#taskErrorMessage')) {
     errorMessage.id = 'taskErrorMessage'
-    errorMessage.innerText = 'Por favor, preencha corretamente o campo URL, com uma url completa'
+    errorMessage.innerText = '*Por favor, preencha corretamente o campo URL, com uma url completa'
     errorMessageRef.appendChild(errorMessage)
   }
     urlRef.classList.add('error')
@@ -67,23 +94,39 @@ function validaUrl(url, allowEmpty=false){
     createTaskButtonRef.classList.remove('button_error')
     createTaskButtonRef.disabled = false
   }
+  
   }
 
 
 
 
-function validaDescricao(descricao){
+function validaDescricao(descricao, allowEmpty=false){
   let errorMessageRef = document.querySelector('.input_descricao') 
-  let descricaoRef = document.querySelector('#description')
+  let descriptionRef = document.querySelector('#description')
   let errorMessage = document.createElement('p')
 
-  if(!errorMessage){
-  errorMessage.id = 'taskErrorMessage'
-  errorMessage.innerText = 'Por favor, preencha corretamente o campo Descrição'
-  errorMessageRef.appendChild(errorMessage)
-}
-descricaoRef.classList.add('error')
-formTask.descricao = descricao
+  descricao = descricao.trim()
+
+  if (descricao === '') {
+    if (errorMessageRef.querySelector('#taskErrorMessage')) {
+      errorMessageRef.removeChild(errorMessageRef.querySelector('#taskErrorMessage'));
+    }
+    errorMessage.id = 'taskErrorMessage'
+    errorMessage.innerText = '*Por favor, preencha o campo Descrição, ele não pode ficam em branco ou conter apenas espaços'
+    errorMessageRef.appendChild(errorMessage)
+    descriptionRef.classList.add('error')
+    createTaskButtonRef.classList.add('button_error')
+    createTaskButtonRef.disabled = true
+  return  
+  }else{
+    if(errorMessageRef.querySelector('#taskErrorMessage')){
+      errorMessageRef.removeChild(errorMessageRef.querySelector('#taskErrorMessage'))
+    }
+    descriptionRef.classList.remove('error')
+    createTaskButtonRef.classList.remove('button_error')
+    createTaskButtonRef.disabled = false
+  }
+
 }
 
 function newTask(event){
@@ -95,8 +138,6 @@ let card = {
   descricao: descriptionRef.value
  }
 
- console.log(card)
-
  cards.push(card)
 
  taskCardsRef.innerHTML += `
@@ -106,25 +147,8 @@ let card = {
  <p> ${card.descricao} </p>
 </div>
 `
-
- console.log(cards)
 }
 
-// for(let card of cards){
-//   taskCardsRef.innerHTML += `
-//   <div class="card">
-//   <img src="${card.url}" alt="">
-//   <h3> ${card.titulo} </h3>
-//   <p> ${card.descricao} </p>
-// </div>
-// `
-// }
-
-var formTask = {
-titulo: taskNameRef,
-url: urlRef,
-descricao: descriptionRef
-}
 
 taskNameRef.addEventListener('keyup', (event) => validaTitulo(event.target.value))
 urlRef.addEventListener('keyup', (event) => validaUrl(event.target.value))
