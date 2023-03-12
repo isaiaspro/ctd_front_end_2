@@ -31,14 +31,18 @@ function validaUrl(url){
   let urlRef = document.querySelector('#url')
   let errorMessage = document.createElement('p')
 
-  if(!errorMessage){
-  errorMessage.id = 'taskErrorMessage'
-  errorMessage.innerText = 'Por favor, preencha corretamente o campo URL'
-  errorMessageRef.appendChild(errorMessage)
+  let regex = new RegExp("^(http|https)://[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$", "i");
+  
+  if (!regex.test(url)) {
+    if(!errorMessage){
+    errorMessage.id = 'taskErrorMessage'
+    errorMessage.innerText = 'Por favor, preencha corretamente o campo URL'
+    errorMessageRef.appendChild(errorMessage)
+    urlRef.classList.add('error')
+  }
+  }
 }
-urlRef.classList.add('error')
-formTask.url = url
-}
+
 
 
 
