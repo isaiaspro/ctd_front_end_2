@@ -2,22 +2,14 @@ const taskNameRef = document.querySelector('#taskName')
 const urlRef = document.querySelector('#url')
 const descriptionRef = document.querySelector('#description')
 const createTaskButtonRef = document.querySelector('#createTaskButton')
+const taskCardsRef = document.querySelector('#taskCards')
 
-console.log(taskNameRef)
-console.log(urlRef)
-console.log(descriptionRef)
-console.log(createTaskButtonRef)
+// console.log(taskCardsRef)
 
 
+const cards = []
 
-var formTask = {
-  titulo: '',
-  url: '',
-  descricao: ''
-}
-
-
-// console.log(formTask)
+console.log(cards)
 
 function validaTitulo(titulo){
   let errorMessageRef = document.querySelector('.input_titulo') 
@@ -66,18 +58,48 @@ formTask.descricao = descricao
 
 function newTask(event){
   event.preventDefault()
-  console.log(formTask)
+
+let card = {
+  titulo: taskNameRef.value,
+  url: urlRef.value,
+  descricao: descriptionRef.value
+ }
+
+ console.log(card)
+
+ cards.push(card)
+
+ taskCardsRef.innerHTML += `
+ <div class="card">
+ <img src="${card.url}" alt="">
+ <h3> ${card.titulo} </h3>
+ <p> ${card.descricao} </p>
+</div>
+`
+
+ console.log(cards)
+}
+
+// for(let card of cards){
+//   taskCardsRef.innerHTML += `
+//   <div class="card">
+//   <img src="${card.url}" alt="">
+//   <h3> ${card.titulo} </h3>
+//   <p> ${card.descricao} </p>
+// </div>
+// `
+// }
+
+var formTask = {
+titulo: taskNameRef,
+url: urlRef,
+descricao: descriptionRef
 }
 
 taskNameRef.addEventListener('keyup', (event) => validaTitulo(event.target.value))
 urlRef.addEventListener('keyup', (event) => validaUrl(event.target.value))
 descriptionRef.addEventListener('keyup', (event) => validaDescricao(event.target.value))
-
-
 createTaskButtonRef.addEventListener('click', (event) => newTask(event))
 
 
-// validaTitulo()
-// validaUrl()
-// validaDescricao()
 

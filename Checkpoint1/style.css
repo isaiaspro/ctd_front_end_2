@@ -9,6 +9,7 @@
 
 body, html{
     font-family: 'roboto',sans-serif;
+    background-color: #050505;
 }
 
 .titles{
@@ -27,7 +28,8 @@ background-color: #050505;
     display: flex;
     flex-direction: column;
     gap: 25px;
-    height: 100%;
+    /* height: 100vh; */
+    max-height:100%;
     width: 100vw;
     max-width: 1150px;
     padding: 12px;
@@ -46,6 +48,7 @@ background-color: #151515;
 min-width: 294.4px;
 gap: 15px;
 padding: 10px;
+border: solid 1px #1f1f1f;
 }
 
 
@@ -146,7 +149,7 @@ max-height: 450px;
 background-color: #151515;
 min-width: 294.4px;
 padding-bottom: 10px;
-transition: transform 0.5s ease-in-out;
+border: solid 1px #1f1f1f;
 }
 
 .card img{
