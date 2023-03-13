@@ -79,12 +79,16 @@ border: solid 1px #1f1f1f;
     border-radius: 12px;
     padding: 0px 10px;
     font-weight: 500;
+    border: 1px solid transparent;
 }
+
 
 .error{
     background-color: #4B2A2A;
     border: 1px solid #FF6666;
 }
+
+
 
 .text-area{
     height: 100px;
@@ -93,7 +97,12 @@ border: solid 1px #1f1f1f;
 
 
 .input:focus{
-outline: none;
+border: 1px solid #454545;
+/* outline: none; */
+}
+
+.error:focus{
+    border: 1px solid #FF6666; 
 }
 
 .button{
@@ -104,13 +113,23 @@ background-color: #6CE971;
 color: #228B22 ;
 width: 274px;
 cursor: pointer;
+border: solid 1px transparent;
 }
+
+.button:focus{
+    border: solid 1px #228B22;
+}
+
 
 .button_error{
     background-color: #6CE97133;
     cursor: not-allowed;
 }
 
+.button:hover{
+    border: solid 1px #228B22;
+
+}
 .div_button{
     display: flex;
     justify-content: flex-end;
@@ -154,6 +173,10 @@ background-color: #151515;
 min-width: 294.4px;
 padding-bottom: 10px;
 border: solid 1px #1f1f1f;
+}
+
+.card:hover{
+    border: 1px solid #454545;
 }
 
 .card img{
