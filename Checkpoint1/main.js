@@ -7,19 +7,18 @@ const taskCardsRef = document.querySelector('#taskCards')
 
 const cards = []
 
-console.log(cards)
 
 createTaskButtonRef.disabled = true
 createTaskButtonRef.classList.add('button_error')
 
-function validaCampos() {
-  const errors = document.querySelectorAll('.error')
-  if (errors.length > 0) {
-    createTaskButtonRef.disabled = true
-  } else {
-    createTaskButtonRef.disabled = false
-  }
-}
+// function validaCampos() {
+//   const errors = document.querySelectorAll('.error')
+//   if (errors.length > 0) {
+//     createTaskButtonRef.disabled = true
+//   } else {
+//     createTaskButtonRef.disabled = false
+//   }
+// }
 
 
 
@@ -27,7 +26,8 @@ function validaTitulo(titulo, allowEmpty=false){
   let errorMessageRef = document.querySelector('.input_titulo') 
   let taskNameRef = document.querySelector('#taskName')
   let errorMessage = document.createElement('p')
-
+  
+  console.log(titulo)
   titulo = titulo.trim()
 
   if (titulo === '') {
@@ -130,15 +130,18 @@ function validaDescricao(descricao, allowEmpty=false){
 function newTask(event){
   event.preventDefault()
 
+  if (taskNameRef.value && urlRef.value && descriptionRef.value) {
+
 let card = {
   titulo: taskNameRef.value,
   url: urlRef.value,
   descricao: descriptionRef.value
  }
 
-validaUrl()
-validaTitulo()
-validaDescricao()
+validaTitulo(taskNameRef.value)
+validaUrl(urlRef.value)
+validaDescricao(descriptionRef.value)
+
 
  cards.push(card)
 
@@ -149,8 +152,22 @@ validaDescricao()
  <p> ${card.descricao} </p>
 </div>
 `
+taskNameRef.value = ''
+urlRef.value = ''
+descriptionRef.value = ''
 
+createTaskButtonRef.disabled = true
+createTaskButtonRef.classList.add('button_error')
+
+}else{
+createTaskButtonRef.disabled = true
+createTaskButtonRef.classList.add('button_error')
+validaTitulo(taskNameRef.value)
+validaUrl(urlRef.value)
+validaDescricao(descriptionRef.value)
 }
+}
+
 
 
 taskNameRef.addEventListener('keyup', (event) => validaTitulo(event.target.value))
