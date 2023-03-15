@@ -21,7 +21,6 @@ body, html{
 display: flex;
 justify-content: center;
 background-color: #050505;
-/* width: 100vw; */
 }
 
 .content{
@@ -98,7 +97,6 @@ border: solid 1px #1f1f1f;
 
 .input:focus{
 border: 1px solid #454545;
-/* outline: none; */
 }
 
 .error:focus{
@@ -196,9 +194,6 @@ border: solid 1px #1f1f1f;
     font-weight: 300;
 
 }
-
-
-
 
 
 

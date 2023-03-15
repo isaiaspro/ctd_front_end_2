@@ -71,6 +71,9 @@ function validaUrl(url, allowEmpty=false){
   }
 
   let regex = new RegExp("^((((https?|ftp|gopher|telnet|nntp):(\\/\\/)|(http|https):\\/\\/)?([\\da-z.-]+)\\.([a-z.]{2,6})|((mailto|news):(\\/\\/)|(http|https):\\/\\/)([a-z0-9-]+(\\.[a-z0-9-]+)*\\.[a-z]{2,6}))(:\\d{2,5})?([\\/\\w.-]*)*\\/?(\\?([\\w\\-.,@?^=%&:\\/~+#]*)+)?(#([\\w\\-\\s]*)+)?)?$", "i");
+
+
+  
   
   if (!regex.test(url)) {
     if (errorMessageRef.querySelector('#taskErrorMessage')) {
